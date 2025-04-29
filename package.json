@@ -69,7 +69,7 @@
     "@capacitor/cli": "^6.0.0",
     "@cypress/schematic": "^2.5.0",
     "@ionic/angular-toolkit": "12.1.1",
-    "@ionic/cli": "7.2.0",
+    "@ionic/cli": "7.2.1",
     "@ionic/storage": "^3.0.6",
     "@types/jasmine": "~3.6.0",
     "@types/leaflet": "^1.9.17",
