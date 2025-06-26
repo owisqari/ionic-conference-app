@@ -1,5 +1,5 @@
 @use "sass:map";
-@import '../../../theme/variables';
+@use '../../../theme/variables' as variables;
 
 ion-fab-button {
   --background: var(--ion-color-step-150, #ffffff);
@@ -16,7 +16,7 @@ ion-fab-button {
   --background-activated: var(--ion-color-step-250, #d9d9d9);
 }
 
-@each $track in $tracks {
+@each $track in variables.$tracks {
   ion-item-sliding[track='#{$track}'] ion-label {
     padding-left: 10px;
 

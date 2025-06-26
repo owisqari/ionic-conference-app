@@ -1,6 +1,6 @@
-@import '../../../theme/variables';
+@use '../../../theme/variables' as variables;
 
-@each $track in $tracks {
+@each $track in variables.$tracks {
   .session-track-#{$track} {
     color: var(--ion-color-#{$track});
   }
