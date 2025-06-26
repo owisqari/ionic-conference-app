@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { addIcons } from 'ionicons';
@@ -89,6 +89,16 @@ import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
     ]
 })
 export class SchedulePage implements OnInit {
+  alertCtrl = inject(AlertController);
+  confService = inject(ConferenceService);
+  loadingCtrl = inject(LoadingController);
+  modalCtrl = inject(ModalController);
+  router = inject(Router);
+  routerOutlet = inject(IonRouterOutlet);
+  toastCtrl = inject(ToastController);
+  user = inject(UserService);
+  config = inject(Config);
+
   // Gets a reference to the list element
   @ViewChild('scheduleList', { static: true }) scheduleList: IonList;
 
@@ -102,17 +112,7 @@ export class SchedulePage implements OnInit {
   confDate: string;
   showSearchbar: boolean;
 
-  constructor(
-    public alertCtrl: AlertController,
-    public confService: ConferenceService,
-    public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController,
-    public router: Router,
-    public routerOutlet: IonRouterOutlet,
-    public toastCtrl: ToastController,
-    public user: UserService,
-    public config: Config
-  ) {
+  constructor() {
     addIcons({
       search,
       options,

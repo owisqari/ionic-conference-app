@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -37,10 +37,11 @@ import { UserOptions } from '../../interfaces/user-options';
   ]
 })
 export class SignupPage {
+  router = inject(Router);
+  userService = inject(UserService);
+
   signup: UserOptions = { username: '', password: '' };
   submitted = false;
-
-  constructor(public router: Router, public userService: UserService) {}
 
   onSignup(form: NgForm) {
     this.submitted = true;

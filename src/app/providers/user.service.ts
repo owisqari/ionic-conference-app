@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  storage = inject(Storage);
+
   favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
-
-  constructor(public storage: Storage) {}
 
   hasFavorite(sessionName: string): boolean {
     return this.favorites.indexOf(sessionName) > -1;

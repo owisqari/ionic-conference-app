@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
@@ -21,13 +21,13 @@ import { arrowForward, close } from 'ionicons/icons';
     imports: [IonHeader, IonToolbar, IonButtons, IonButton, IonContent, IonIcon]
 })
 export class TutorialPage {
+  menu = inject(MenuController);
+  router = inject(Router);
+  storage = inject(Storage);
+
   showSkip = true;
 
-  constructor(
-    public menu: MenuController,
-    public router: Router,
-    public storage: Storage
-  ) {
+  constructor() {
     addIcons({
       arrowForward,
       close,

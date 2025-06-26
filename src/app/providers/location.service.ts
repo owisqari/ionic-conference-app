@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { Location } from '../interfaces/conference.interfaces';
@@ -7,10 +7,10 @@ import { Location } from '../interfaces/conference.interfaces';
   providedIn: 'root'
 })
 export class LocationService {
+  private http = inject(HttpClient);
+
   private locationsSubject = new BehaviorSubject<Location[]>([]);
   public readonly locations$ = this.locationsSubject.asObservable();
-
-  constructor(private http: HttpClient) {}
 
   loadLocations(): Observable<Location[]> {
     return this.http.get<any>('assets/data/data.json').pipe(
