@@ -55,7 +55,7 @@
           },
           "defaultConfiguration": "",
           "options": {
-            "allowedCommonJsDependencies": ["localforage"],
+            "allowedCommonJsDependencies": ["localforage", "leaflet"],
             "assets": [
               {
                 "glob": "**/*",
