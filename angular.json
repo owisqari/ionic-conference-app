@@ -104,7 +104,7 @@
           "configurations": {
             "ci": {},
             "production": {
-              "buildTarget": "app:serve:production"
+              "buildTarget": "app:build:production"
             }
           },
           "options": {
