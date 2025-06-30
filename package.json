@@ -10,8 +10,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint && npm run lint:sass",
-    "lint:sass": "stylelint \"src/**/*.scss\"",
-    "e2e": "ng e2e"
+    "lint:sass": "stylelint \"src/**/*.scss\""
   },
   "repository": {
     "type": "git",
