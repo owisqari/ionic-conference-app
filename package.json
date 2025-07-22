@@ -66,6 +66,7 @@
     "@angular/compiler-cli": "^19.1.6",
     "@angular/language-service": "^19.1.6",
     "@capacitor/cli": "^6.0.0",
+    "@cypress/webpack-dev-server": "^4.1.0",
     "@ionic/angular-toolkit": "12.1.1",
     "@ionic/cli": "7.2.0",
     "@ionic/storage": "^3.0.6",

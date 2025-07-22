@@ -1,24 +1,29 @@
-import { CapacitorConfig } from '@capacitor/cli';
+const { defineConfig } = require("cypress");
+const { devServer } = require("@cypress/webpack-dev-server");
+const webpackConfig = require("@angular-devkit/build-angular/src/utils/webpack-browser-config"); // This line is problematic if paths are wrong
 
-const config: CapacitorConfig = {
-  appId: 'ionic.conference.app',
-  appName: 'ionic-conference-app',
-  webDir: 'www',
-  plugins: {
-    SplashScreen: {
-      launchShowDuration: 3000,
-      launchAutoHide: true,
-      backgroundColor: '#ffffffff',
-      androidSplashResourceName: 'splash',
-      androidScaleType: 'CENTER_CROP',
-      showSpinner: true,
-      androidSpinnerStyle: 'large',
-      iosSpinnerStyle: 'small',
-      spinnerColor: '#999999',
-      splashFullScreen: true,
-      splashImmersive: true,
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
     },
+    baseUrl: "http://localhost:8100", // For E2E tests
   },
-};
 
-export default config;
+  component: {
+    devServer: {
+      framework: "angular",
+      bundler: "webpack",
+      webpackConfig: async () => {
+        // This is where the error likely occurs
+        // The `getAngularCliWebpackConfig` function might be receiving bad arguments
+        // or there's an incompatibility in its internal path resolution.
+        const angularWebpackConfig =
+          await require("@cypress/angular/src/devServer").getAngularCliWebpackConfig();
+        return angularWebpackConfig;
+      },
+    },
+    specPattern: "**/*.cy.{js,jsx,ts,tsx}",
+    indexHtmlFile: "cypress/support/component-index.html", // Example
+  },
+});
