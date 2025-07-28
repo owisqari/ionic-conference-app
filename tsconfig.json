@@ -4,7 +4,7 @@
     "module": "es2020",
     "esModuleInterop": true,
     "outDir": "./dist/out-tsc",
-    "sourceMap": false,
+    "sourceMap": false, // Set to true if you want source maps in your compiled JS
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -12,7 +12,8 @@
     "target": "ES2022",
     "skipLibCheck": true,
     "lib": ["es2017", "dom"],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "types": ["cypress", "node"] // <--- ADDED: Crucial for 'cy' type recognition
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -20,5 +21,11 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts", // Include all Angular TypeScript files
+    "cypress/**/*.ts" // <--- ADDED: Include all Cypress TypeScript files
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules from TypeScript compilation
+  ]
 }

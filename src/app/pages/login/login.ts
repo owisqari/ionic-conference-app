@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, inject } from "@angular/core";
+import { FormsModule, NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import {
   IonButton,
   IonButtons,
@@ -12,15 +12,15 @@ import {
   IonRow,
   IonTitle,
   IonToolbar,
-} from '@ionic/angular/standalone';
+} from "@ionic/angular/standalone";
 
-import { UserOptions } from '../../interfaces/user-options';
-import { UserService } from '../../providers/user.service';
+import { UserOptions } from "../../interfaces/user-options";
+import { UserService } from "../../providers/user.service";
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
-  styleUrls: ['./login.scss'],
+  selector: "page-login",
+  templateUrl: "login.html",
+  styleUrls: ["./login.scss"],
   imports: [
     FormsModule,
     IonButton,
@@ -39,7 +39,7 @@ export class LoginPage {
   private router = inject(Router);
   private user = inject(UserService);
 
-  login: UserOptions = { username: '', password: '' };
+  login: UserOptions = { username: "", password: "" };
   submitted = false;
 
   onLogin(form: NgForm) {
@@ -47,11 +47,11 @@ export class LoginPage {
 
     if (form.valid) {
       this.user.login(this.login.username);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.router.navigateByUrl("/app/tabs/schedule");
     }
   }
 
   onSignup() {
-    this.router.navigateByUrl('/signup');
+    this.router.navigateByUrl("/signup");
   }
 }

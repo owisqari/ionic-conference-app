@@ -1,3 +1,5 @@
+// cypress/support/component.ts
+
 // ***********************************************************
 // This example support/component.ts is processed and
 // loaded automatically before your test files.
@@ -14,23 +16,40 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
-import { mount } from 'cypress/angular'
+import { mount } from "cypress/angular";
+
+// --- ADDED/MODIFIED IMPORTS FOR IONIC/ANGULAR COMPONENT TESTING ---
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterTestingModule } from "@angular/router/testing";
+import { provideIonicAngular } from "@ionic/angular/standalone"; // CRUCIAL FOR IONIC
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
-// Alternatively, can be defined in cypress/support/component.d.ts
-// with a <reference path="./component" /> at the top of your spec.
 declare global {
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount
+      mount: typeof mount;
     }
   }
 }
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add("mount", (component, config) => {
+  return mount(component, {
+    ...config,
+    // Add common providers/imports needed for your components here
+    imports: [
+      BrowserAnimationsModule, // Provides necessary animation providers
+      RouterTestingModule, // Provides a testing module for Angular Router
+      ...(config?.imports || []), // Preserve component-specific imports
+    ],
+    providers: [
+      provideIonicAngular(), // Provides Ionic's core services and setup
+      ...(config?.providers || []), // Preserve component-specific providers
+    ],
+  });
+});
 
 // Example use:
 // cy.mount(MyComponent)

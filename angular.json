@@ -106,9 +106,10 @@
           },
           "options": {
             "buildTarget": "app:build",
-            "disableHostCheck": true
+            "allowedHosts": ["all"]
           }
         },
+
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "configurations": {

@@ -45,12 +45,20 @@
 
       <ion-row>
         <ion-col>
-          <ion-button (click)="onLogin(loginForm)" type="submit" expand="block"
+          <ion-button
+            data-cy="login-button"
+            (click)="onLogin(loginForm)"
+            type="submit"
+            expand="block"
             >Login</ion-button
           >
         </ion-col>
         <ion-col>
-          <ion-button (click)="onSignup()" color="light" expand="block"
+          <ion-button
+            data-cy="signup-button"
+            (click)="onSignup()"
+            color="light"
+            expand="block"
             >Signup</ion-button
           >
         </ion-col>
